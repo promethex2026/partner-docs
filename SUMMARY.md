@@ -23,13 +23,13 @@
 
 ## Core Technology & Infrastructure
 
-* [Page 2](core-technology-and-infrastructure/page-2.md)
-* [Page 1](core-technology-and-infrastructure/page-1.md)
+* [APMM Engine & Pricing](core-technology-and-infrastructure/page-1.md)
+* [Architecture & Settlement](core-technology-and-infrastructure/page-2.md)
 
 ## Developer & Advanced Guides
 
-* [Page 3](developer-and-advanced-guides/page-3.md)
-* [Page 4](developer-and-advanced-guides/page-4.md)
+* [Partner Integration Guide](developer-and-advanced-guides/page-3.md)
+* [API & SDK Overview](developer-and-advanced-guides/page-4.md)
 
 ## Appendix & Support
 
