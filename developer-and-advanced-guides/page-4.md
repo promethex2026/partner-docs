@@ -1,6 +1,6 @@
 # API & SDK Overview
 
-This page provides a high-level overview of the PrometheX developer toolkit — REST API, real-time events, Widget SDK, and smart contract interfaces. For complete endpoint documentation, refer to our [Developer Docs](https://docs.promethex.market).
+This page provides a high-level overview of the PrometheX developer toolkit — REST API, real-time events, Widget SDK, and smart contract interfaces. For complete endpoint documentation, refer to our [Developer Docs](https://guide.promethex.market).
 
 ---
 
@@ -37,6 +37,38 @@ Each deployment has its own API endpoint, provided during onboarding:
 ```
 https://api.{your-domain}/api/v1/
 ```
+
+### Rate Limits
+
+| Endpoint Type | Rate Limit | Window |
+|--------------|------------|--------|
+| Public endpoints | 100 requests | Per minute |
+| Authenticated reads | 60 requests | Per minute |
+| Write operations | 20 requests | Per minute |
+| SSE connections | 5 concurrent | Per user |
+
+Rate limits are enforced per tenant. If you need higher limits, contact us to discuss your use case.
+
+### Error Handling
+
+All API responses follow a consistent error format:
+
+```json
+{
+  "code": 400,
+  "reason": "INVALID_AMOUNT",
+  "msg": "Order amount must be greater than minimum trade size"
+}
+```
+
+| Code | Meaning | Action |
+|------|---------|--------|
+| 400 | Bad Request | Check request parameters |
+| 401 | Unauthorized | Refresh authentication token |
+| 403 | Forbidden | Check permissions/tenant scope |
+| 404 | Not Found | Verify resource exists |
+| 429 | Rate Limited | Implement exponential backoff |
+| 500 | Server Error | Retry with backoff, contact support |
 
 ---
 
@@ -134,6 +166,63 @@ import { MarketCard, BetPanel } from '@promethex/widget-react';
 />
 ```
 
+### Configuration Options
+
+| Option | Type | Default | Description |
+|--------|------|---------|-------------|
+| `marketAddress` | `string` | **required** | On-chain market contract address |
+| `tenantId` | `string` | **required** | Your tenant identifier |
+| `apiKey` | `string` | **required** | API key for authentication |
+| `theme` | `"light"` \| `"dark"` | `"light"` | Widget color theme |
+| `width` | `string` | `"100%"` | Widget width (px or %) |
+| `height` | `number` | `600` | Widget height in pixels |
+| `locale` | `string` | `"en"` | Language code (`en`, `zh`) |
+| `hideHeader` | `boolean` | `false` | Hide the market title bar |
+| `tradingEnabled` | `boolean` | `true` | Enable trading (set `false` for view-only) |
+| `showChart` | `boolean` | `true` | Show the price history chart |
+| `showOrderBook` | `boolean` | `false` | Show the order book (when CLOB is available) |
+
+### Widget Playground
+
+The **Widget Playground** is an interactive tool for previewing all widget components and generating ready-to-use integration code.
+
+**[Open Widget Playground →](https://playground.promethex.market)**
+
+#### Available Widgets
+
+| Widget | Description |
+|--------|-------------|
+| `PredictionCard` | Single market card with price, volume, and outcome display |
+| `EventCard` | Multi-market event card with grouped outcomes |
+| `BetPanel` | Trading interface for placing buy/sell orders |
+| `PriceChart` | Historical price chart with candlestick and line modes |
+| `MarketList` | Filterable, scrollable list of markets |
+| `WalletButton` | Connect wallet button with AA support |
+
+#### Themes
+
+Four built-in themes are available for preview:
+
+- **Dark** — Default dark mode, optimized for trading interfaces
+- **Light** — Clean light mode for content-heavy sites
+- **Exchange** — High-contrast theme inspired by professional trading platforms
+- **Media** — Soft, editorial theme for news and media integrations
+
+#### Code Generation
+
+The Playground generates integration code in three formats:
+
+- **React** — Copy-paste JSX with `@promethex/widget-react`
+- **Script Tag** — Vanilla JS with `<script>` loader for any HTML page
+- **iframe** — Zero-dependency embed URL
+
+#### Usage Flow
+
+1. **Select** a widget from the sidebar
+2. **Configure** props (market ID, theme, display options)
+3. **Preview** the result in real-time
+4. **Copy** the generated code snippet into your project
+
 ### Theming
 
 Widgets support full visual customization:
@@ -206,7 +295,7 @@ Market makers can query APMM state to inform their CLOB strategy:
 
 For complete technical documentation including endpoint specifications, request/response schemas, error codes, and integration tutorials:
 
-**[Developer Docs →](https://docs.promethex.market)**
+**[Developer Docs →](https://guide.promethex.market)**
 
 The Developer Docs cover:
 - Complete API Reference with request/response examples

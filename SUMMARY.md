@@ -26,6 +26,11 @@
 * [APMM Engine & Pricing](core-technology-and-infrastructure/page-1.md)
 * [Architecture & Settlement](core-technology-and-infrastructure/page-2.md)
 
+## Technical Reference
+
+* [Deployment & Chains](technical-reference/deployment-chains.md)
+* [Contract Addresses](technical-reference/contract-addresses.md)
+
 ## Developer & Advanced Guides
 
 * [Partner Integration Guide](developer-and-advanced-guides/page-3.md)
