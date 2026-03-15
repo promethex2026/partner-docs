@@ -1,6 +1,6 @@
 # API & SDK Overview
 
-This page provides a high-level overview of the PrometheX developer toolkit — REST API, real-time events, Widget SDK, and smart contract interfaces. For complete endpoint documentation, refer to our [Developer Docs](https://guide.promethex.market).
+This page provides a high-level overview of the PrometheX developer toolkit — REST API, real-time events, Widget SDK, and smart contract interfaces. For complete endpoint documentation, see the sections below.
 
 ---
 
@@ -289,17 +289,3 @@ Market makers can query APMM state to inform their CLOB strategy:
 - Fee rate → minimum profitable spread
 - Pool depth → expected slippage for APMM trades
 
----
-
-## Full Documentation
-
-For complete technical documentation including endpoint specifications, request/response schemas, error codes, and integration tutorials:
-
-**[Developer Docs →](https://guide.promethex.market)**
-
-The Developer Docs cover:
-- Complete API Reference with request/response examples
-- Smart Contract Reference with function signatures and events
-- Widget SDK API with props, callbacks, and theming guide
-- Integration tutorials and sample code
-- Webhook and event documentation
